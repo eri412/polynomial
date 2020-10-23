@@ -17,7 +17,6 @@ class Polynomial:
             if coeffs != ():
                 for i in coeffs:
                     self.coeffs.append(i)
-            
 
     def __str__(self):
         if len(self.coeffs) == 0:
@@ -55,7 +54,7 @@ class Polynomial:
         return res
     
 def get_coords():
-    str_format = re.compile(r"^([-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?) ([-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)$")
+    str_format = re.compile(r"^([-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?),([-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?)$")
     coords = []
     temp_input = ''
     try:
@@ -64,7 +63,7 @@ def get_coords():
         return coords
     while True:
         if (match := re.match(str_format, temp_input)) is not None:
-            input_arr = temp_input.split(' ')
+            input_arr = temp_input.split(',')
             coords.append((float(input_arr[0]), float(input_arr[1])))
         else:
             print('bad input, skip')
